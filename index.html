@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кредитный банк «Надежда»</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    .section { padding: 60px 0; }
+    h2 { font-weight: 700; color: #0d6efd; }
+    .card { border: 1px solid #ddd; transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    th { background-color: #0d6efd; color: white; }
+    .carousel-item img { max-height: 300px; object-fit: cover; }
+    .carousel-caption { background: rgba(0,0,0,0.5); border-radius: 5px; }
+    #bankLogo { transition: transform 0.3s; }
+    #bankLogo:hover { transform: rotate(15deg); }
+    .currency-up { color: #198754; }
+    .currency-down { color: #dc3545; }
+    #loanChart .bar { transition: all 0.3s; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand text-light" href="#"><i class="bi bi-bank2" id="bankLogo"></i> Надежда Банк</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-light" href="#slider">Главная</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#products">Продукты</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#calculator">Калькулятор</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#exchange">Курсы</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#about">О банке</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#contacts">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="slider" class="bg-light py-4">
+    <div class="container">
+      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/bank1.jpg" class="d-block w-100" alt="Слайд 1">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Кредиты под минимальный процент</h5>
+              <p>Подберем лучший вариант финансирования</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="images/bank2.jpg" class="d-block w-100" alt="Слайд 2">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Вклады до 10% годовых</h5>
+              <p>Надёжность и доход — с банком «Надежда»</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#mainCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#mainCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Наши продукты</h2>
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/potrebit.jpg" class="card-img-top" alt="Потребительский">
+            <div class="card-body">
+              <h5 class="card-title"><i class="bi bi-cash-coin"></i> Потребительский</h5>
+              <p>До 1 млн ₽, ставка от 8.9% годовых</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/avto.jpg" class="card-img-top" alt="Автокредит">
+            <div class="card-body">
+              <h5 class="card-title"><i class="bi bi-truck-front"></i> Автокредит</h5>
+              <p>Быстрое одобрение, ставка от 6.5%</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="images/upoteka.jpg" class="card-img-top" alt="Ипотека">
+            <div class="card-body">
+              <h5 class="card-title"><i class="bi bi-house-heart"></i> Ипотека</h5>
+              <p>До 10 млн ₽, гибкие условия</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <h4 class="mb-3">Вклады</h4>
+        <table class="table table-bordered">
+          <thead class="table-primary">
+            <tr>
+              <th>Название</th>
+              <th>Ставка</th>
+              <th>Срок</th>
+              <th>Минимум</th>
+              <th>Статус</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Доходный+</td>
+              <td>10%</td>
+              <td>12 мес.</td>
+              <td>50 000 ₽</td>
+              <td><span class="badge bg-success">Доступен</span></td>
+            </tr>
+            <tr>
+              <td>Гибкий</td>
+              <td>8%</td>
+              <td>6 мес.</td>
+              <td>20 000 ₽</td>
+              <td><span class="badge bg-primary">Открыт</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Калькулятор кредита</h2>
+      <div id="loanApp">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <form @submit.prevent="calculate">
+                  <div class="mb-3">
+                    <label class="form-label">Тип кредита</label>
+                    <select class="form-select" v-model="loanType">
+                      <option value="consumer">Потребительский (8.9%)</option>
+                      <option value="auto">Автокредит (6.5%)</option>
+                      <option value="mortgage">Ипотека (7.9%)</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Сумма кредита (₽)</label>
+                    <input type="number" class="form-control" v-model="amount" min="10000" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Срок (месяцев)</label>
+                    <input type="number" class="form-control" v-model="term" min="3" max="120" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Рассчитать</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">График платежей</h5>
+                <div class="mb-3">
+                  <svg id="loanChart" width="100%" height="200"></svg>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Месяц</th>
+                        <th>Платеж</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(p, i) in payments" :key="i">
+                        <td>{{ i+1 }}</td>
+                        <td>{{ p.toFixed(2) }} ₽</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr class="table-primary">
+                        <td><strong>Итого:</strong></td>
+                        <td><strong>{{ (monthlyPayment * term).toFixed(2) }} ₽</strong></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="exchange" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Курсы валют</h2>
+      <div id="currencyApp">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between mb-3">
+                  <h5 class="mb-0">Курсы ЦБ РФ</h5>
+                  <div class="text-muted">{{ currentDate }}</div>
+                </div>
+                <div v-if="loading" class="text-center py-3">
+                  <div class="spinner-border"></div>
+                </div>
+                <div v-else-if="error" class="alert alert-danger">
+                  {{ error }} <button @click="load" class="btn btn-sm btn-danger">Повторить</button>
+                </div>
+                <table v-else class="table">
+                  <thead>
+                    <tr>
+                      <th>Валюта</th>
+                      <th>Курс</th>
+                      <th>Изменение</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(c, code) in currencies" :key="code">
+                      <td>{{ c.name }} ({{ code }})</td>
+                      <td>{{ c.value.toFixed(2) }} ₽</td>
+                      <td :class="c.change > 0 ? 'currency-up' : 'currency-down'">
+                        <i :class="c.change > 0 ? 'bi bi-arrow-up' : 'bi bi-arrow-down'"></i>
+                        {{ c.change > 0 ? '+' : '' }}{{ c.change.toFixed(2) }}%
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">О банке</h2>
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p>Кредитный банк «Надежда» работает с 2015 года. Мы помогаем людям достигать финансовых целей через простые и надёжные продукты.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="accordion" id="bankAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#item1">Безопасность</button>
+              </h2>
+              <div id="item1" class="accordion-collapse collapse show" data-bs-parent="#bankAccordion">
+                <div class="accordion-body">Все вклады застрахованы. Банк лицензирован ЦБ РФ.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#item2">Скорость</button>
+              </h2>
+              <div id="item2" class="accordion-collapse collapse" data-bs-parent="#bankAccordion">
+                <div class="accordion-body">Кредиты — от заявки до выдачи за 1 день.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Контакты</h2>
+      <form>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="Ваше имя" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <input type="tel" class="form-control" placeholder="Телефон" required>
+          </div>
+          <div class="col-md-12 mb-3">
+            <textarea class="form-control" rows="3" placeholder="Сообщение"></textarea>
+          </div>
+          <div class="col-12 mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="agree" required>
+            <label class="form-check-label" for="agree">Я согласен на обработку данных</label>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary"><i class="bi bi-send"></i> Отправить</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-primary text-light text-center py-3">
+    <p class="mb-0">&copy; 2025 Кредитный банк «Надежда». Все права защищены.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Калькулятор кредита
+    Vue.createApp({
+      data() {
+        return {
+          loanType: 'consumer',
+          amount: 100000,
+          term: 12,
+          monthlyPayment: 0,
+          payments: []
+        }
+      },
+      methods: {
+        calculate() {
+          let rate;
+          switch(this.loanType) {
+            case 'consumer': rate = 8.9; break;
+            case 'auto': rate = 6.5; break;
+            case 'mortgage': rate = 7.9; break;
+          }
+          
+          const monthlyRate = rate / 100 / 12;
+          this.monthlyPayment = this.amount * monthlyRate * Math.pow(1 + monthlyRate, this.term) / 
+                               (Math.pow(1 + monthlyRate, this.term) - 1);
+          this.payments = Array(this.term).fill(this.monthlyPayment);
+          this.drawChart();
+        },
+        drawChart() {
+          const svg = document.getElementById('loanChart');
+          svg.innerHTML = '';
+          
+          const width = svg.clientWidth;
+          const height = svg.clientHeight;
+          const margin = 20;
+          const chartWidth = width - 2 * margin;
+          const chartHeight = height - 2 * margin;
+          
+          const principal = this.amount;
+          const interest = this.monthlyPayment * this.term - principal;
+          const maxValue = Math.max(principal, interest, this.monthlyPayment * this.term);
+          const scale = chartHeight / maxValue;
+          
+          // Рисуем столбцы
+          const createBar = (x, value, color, label) => {
+            const barHeight = value * scale;
+            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rect.setAttribute('x', x);
+            rect.setAttribute('y', height - margin - barHeight);
+            rect.setAttribute('width', chartWidth / 3 - 10);
+            rect.setAttribute('height', barHeight);
+            rect.setAttribute('fill', color);
+            rect.setAttribute('class', 'bar');
+            svg.appendChild(rect);
+            
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', x + (chartWidth / 3 - 10) / 2);
+            text.setAttribute('y', height - margin - barHeight - 5);
+            text.setAttribute('text-anchor', 'middle');
+            text.setAttribute('fill', 'white');
+            text.textContent = label;
+            svg.appendChild(text);
+          };
+          
+          createBar(margin, principal, '#0d6efd', 'Кредит');
+          createBar(margin + chartWidth / 3, interest, '#6c757d', 'Проценты');
+          createBar(margin + 2 * chartWidth / 3, this.monthlyPayment * this.term, '#198754', 'Всего');
+        }
+      },
+      mounted() {
+        this.calculate();
+      }
+    }).mount('#loanApp');
+    
+    // Курсы валют
+    Vue.createApp({
+      data() {
+        return {
+          currencies: {},
+          loading: true,
+          error: null,
+          currentDate: new Date().toLocaleDateString('ru-RU')
+        }
+      },
+      methods: {
+        async load() {
+          try {
+            this.loading = true;
+            const response = await fetch('https://www.cbr-xml-daily.ru/daily_json.js');
+            const data = await response.json();
+            
+            this.currentDate = new Date(data.Date).toLocaleDateString('ru-RU');
+            this.currencies = {
+              USD: {
+                name: 'Доллар США',
+                value: data.Valute.USD.Value,
+                change: (data.Valute.USD.Value - data.Valute.USD.Previous) / data.Valute.USD.Previous * 100
+              },
+              EUR: {
+                name: 'Евро',
+                value: data.Valute.EUR.Value,
+                change: (data.Valute.EUR.Value - data.Valute.EUR.Previous) / data.Valute.EUR.Previous * 100
+              }
+            };
+          } catch (err) {
+            this.error = 'Ошибка загрузки данных';
+          } finally {
+            this.loading = false;
+          }
+        }
+      },
+      mounted() {
+        this.load();
+      }
+    }).mount('#currencyApp');
+  </script>
+</body>
+</html>

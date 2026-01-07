@@ -1,0 +1,71 @@
+.section {
+    padding: 60px 0;
+  }
+  
+  h2 {
+    font-weight: 700;
+    color: #0d6efd;
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .accordion-button {
+    background-color: #f8f9fa;
+    font-weight: 600;
+  }
+  .accordion-button:not(.collapsed) {
+    background-color: #e9ecef;
+  }
+  
+  table {
+    background-color: #fff;
+  }
+  th {
+    background-color: #0d6efd;
+    color: white;
+  }
+  
+  form .form-control {
+    border-radius: 0.5rem;
+  }
+  form button {
+    padding: 10px 20px;
+    font-weight: 600;
+  }
+  
+  .pagination .page-link {
+    color: #0d6efd;
+    border-radius: 0.3rem;
+  }
+  .pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+  }
+  
+  .carousel-inner img {
+    max-height: 300px;
+    object-fit: cover;
+  }
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+    padding: 15px;
+  }
+  
+  footer {
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 576px) {
+    .form-control {
+      font-size: 0.9rem;
+    }
+  }
